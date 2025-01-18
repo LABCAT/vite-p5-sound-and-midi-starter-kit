@@ -1,3 +1,5 @@
-export default {
-  base: '/p5js-tonejs-starter-kit/'
-}
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  base: process.env.VITE_BASE_PATH || '/'
+})

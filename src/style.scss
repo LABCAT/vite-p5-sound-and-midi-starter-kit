@@ -1,9 +1,67 @@
+:root {
+    --gradient-bg: linear-gradient(0deg,
+            rgba(27, 17, 77, 1) -8.35%,
+            rgba(29, 22, 87, 1) -5.1%,
+            rgba(51, 65, 174, 1) 28.53%,
+            rgba(59, 82, 208, 1) 43.72%,
+            rgba(53, 100, 213, 1) 51.31%,
+            rgba(37, 146, 225, 1) 67.59%,
+            rgba(12, 219, 245, 1) 89.28%,
+            rgba(0, 255, 255, 1) 100.13%);
+    --play-icon-color: #000;
+}
+
 body {
     margin: 0;
-    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     overflow: hidden;
+}
 
-    canvas {
-        display: block;
+.loading {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: var(--gradient-bg);
+    transform: rotate(-180deg);
+    transition: opacity 3s;
+    opacity: 1;
+
+    &--complete {
+        opacity: 0;
+    }
+
+    svg {
+        margin: auto;
+        width: 10rem;
+        height: 10rem;
+        background: transparent;
+        shape-rendering: auto;
+    }
+
+    path {
+        fill: none;
+        stroke: #ff0cb8;
+        transform: scale(0.8);
+        transform-origin: 50px 50px;
+    }
+}
+
+#play-icon {
+    position: fixed;
+    top: calc(50% - 60px);
+    left: calc(50% - 60px);
+    width: 120px;
+    height: 120px;
+    fill: var(--play-icon-color);
+    z-index: 999;
+    opacity: 1;
+    transition: opacity 1s;
+    cursor: pointer;
+
+    &.fade-out {
+        opacity: 0;
     }
 }

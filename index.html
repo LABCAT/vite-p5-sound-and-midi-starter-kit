@@ -1,12 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <title>p5.js + Tone.js Starter</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title id="page-title"></title>
+  <script type="module">
+    import config from './project.config.js';
+    document.getElementById('page-title').textContent = config.title;
+    document.querySelector("link[rel='icon']").href = config.favicon;
+    if (config.gtmId && window.location.hostname !== 'localhost') {
+      (function (w, d, s, l, i) { w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f); })(window, document, 'script', 'dataLayer', config.gtmId);
+    }
+  </script>
+  <link rel="icon" href="" />
+  <script type="module" src="src/main.js"></script>
 </head>
 
 <body>
-  <script type="module" src="/src/main.js"></script>
+  <div id="p5_loading"></div>
+  <div id='loader' class="loading">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+      <path fill="none" stroke-width="8" stroke-dasharray="42.76482137044271 42.76482137044271"
+        d="M24.3 30C11.4 30 5 43.3 5 50s6.4 20 19.3 20c19.3 0 32.1-40 51.4-40 C88.6 30 95 43.3 95 50s-6.4 20-19.3 20C56.4 70 43.6 30 24.3 30z"
+        stroke-linecap="round" style="transform:scale(0.8);transform-origin:50px 50px">
+        <animate attributeName="stroke-dashoffset" repeatCount="indefinite" dur="1s" keyTimes="0;1"
+          values="0;256.58892822265625"></animate>
+      </path>
+    </svg>
+  </div>
 </body>
-
 </html>
