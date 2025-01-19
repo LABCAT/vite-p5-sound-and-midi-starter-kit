@@ -11,11 +11,9 @@ const CirclesSketch = (p) => {
   p.songHasFinished = false;
 
   p.preload = () => {
+    console.log('Preload started');
     p.song = p.loadSound(audio, p.loadMidi);
     p.song.onended(() => p.songHasFinished = true);
-
-    console.log(p.song);
-    
   };
 
   p.setup = () => {
@@ -74,7 +72,6 @@ const CirclesSketch = (p) => {
   }
 
   p.loadMidi = () => {
-    console.log(p.song);
     Midi.fromUrl(midi).then((result) => {
       console.log(result);
       const noteSet1 = result.tracks[5].notes; // Synth 1

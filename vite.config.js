@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import inject from '@rollup/plugin-inject'
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import path from 'path';
 
@@ -14,6 +15,9 @@ export default defineConfig({
     target: 'esnext',
   },
   plugins: [
+    inject({
+      p5: 'p5',
+    }),
     viteStaticCopy({
       targets: [
         {
