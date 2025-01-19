@@ -8,7 +8,7 @@
             rgba(37, 146, 225, 1) 67.59%,
             rgba(12, 219, 245, 1) 89.28%,
             rgba(0, 255, 255, 1) 100.13%);
-    --play-icon-color: #000;
+    --play-icon-color: white;
 }
 
 body {
@@ -56,12 +56,14 @@ body {
     width: 120px;
     height: 120px;
     fill: var(--play-icon-color);
+    visibility: hidden;
     z-index: 999;
-    opacity: 1;
+    opacity: 0;
     transition: opacity 1s;
     cursor: pointer;
 
-    &.fade-out {
-        opacity: 0;
+    &.fade-in {
+        opacity: 1;
+        visibility: visible;
     }
 }
