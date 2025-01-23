@@ -1,16 +1,19 @@
-# p5.js + Tone.js Starter Kit
+# Vite P5 Sound and MIDI Starter Kit
 
-A minimal starter kit for creating animated audio sketches with p5.js and Tone.js.
+A minimal starter kit for creating animated audio sketches with p5.sound.js and Tone.js Midi.
 
 ## Requirements
+
 - Node.js 22
 - pnpm (`npm install -g pnpm`)
 
 ## Setup
+
 ```bash
-# Clone repository
-git clone https://github.com/LABCAT/p5js-tonejs-starter-kit.git
-cd p5js-tonejs-starter-kit
+# Clone repository and remove git
+git clone https://github.com/LABCAT/vite-p5-sound-and-midi-starter-kit.git
+cd vite-p5-sound-and-midi-starter-kit
+rm .git -rf
 
 # Use correct Node version
 nvm use
@@ -32,4 +35,5 @@ pnpm deploy
 ```
 
 ## License
+
 MIT

@@ -9,6 +9,7 @@ export default defineConfig({
     alias: {
       '@audio': path.resolve(__dirname, 'src/audio'),
       '@demos': path.resolve(__dirname, 'src/demos'),
+      '@lib': path.resolve(__dirname, 'src/lib'),
     },
   },
   build: {

@@ -1,5 +1,5 @@
 {
-  "name": "vite-p5js-tonejs-starter",
+  "name": "vite-p5-sound-and-midi-starter-kit",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -11,7 +11,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "VITE_BASE_PATH=/p5js-tonejs-starter-kit/ pnpm run build && gh-pages -d dist"
+    "deploy": "VITE_BASE_PATH=/vite-p5-sound-and-midi-starter-kit/ pnpm run build && gh-pages -d dist"
   },
   "devDependencies": {
     "@rollup/plugin-inject": "^5.0.5",
