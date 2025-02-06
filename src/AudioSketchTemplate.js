@@ -22,7 +22,6 @@ const AudioSketchTemplate = (p) => {
         /** 
          * Log when preload starts
          */
-        console.log('Preload started');
         p.song = p.loadSound(audio, p.loadMidi);
         p.song.onended(() => p.songHasFinished = true);
     };
