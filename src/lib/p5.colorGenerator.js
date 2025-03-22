@@ -5,19 +5,21 @@ export default class ColorGenerator {
      * @param {string} colorString - The base color in any valid p5.js color format (e.g., hex or RGB).
      * @param {number} [opacity=1] - The opacity of the color, defaults to 1.
      */
-    constructor(p5, colorString, opacity = 1) {
+     constructor(p5, colorString, opacity = 1) {
         this.p5 = p5;
         this.opacity = opacity;
-        this.p5.colorMode(this.p5.HSB, 360, 100, 100, 1); // Use this.p5 directly
+        this.p5.colorMode(this.p5.HSB, 360, 100, 100, 1);
 
         if (colorString === undefined) {
             let h = this.p5.random(0, 360);
             let s = this.p5.random(0, 100);
             let b = this.p5.random(0, 100);
-            colorString = this.p5.color(h, s, b, this.opacity); // Opacity applied here!
+            colorString = this.p5.color(h, s, b, this.opacity);
+        } else if (colorString === 'bright') {
+            colorString = this.getBrightColor();
         } else {
-            let c = this.p5.color(colorString); // Get the color object first
-            colorString = this.p5.color(this.p5.hue(c), this.p5.saturation(c), this.p5.brightness(c), this.opacity); // Opacity applied here!
+            let c = this.p5.color(colorString);
+            colorString = this.p5.color(this.p5.hue(c), this.p5.saturation(c), this.p5.brightness(c), this.opacity);
         }
 
         // Store the color and its HSB components
@@ -25,6 +27,19 @@ export default class ColorGenerator {
         this.h = this.p5.hue(this.color);
         this.s = this.p5.saturation(this.color);
         this.b = this.p5.brightness(this.color);
+    }
+
+    /**
+     * Generates a bright color with high saturation and brightness values.
+     * @return {Object} A bright p5.Color object.
+     */
+    getBrightColor() {
+        return this.p5.color(
+            this.p5.random(0, 360),    // Full hue range for variety
+            this.p5.random(80, 100),   // High saturation (80-100)
+            this.p5.random(80, 100),   // High brightness (80-100)
+            this.opacity
+        );
     }
 
     /**
