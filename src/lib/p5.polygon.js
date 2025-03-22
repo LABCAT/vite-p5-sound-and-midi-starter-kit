@@ -25,10 +25,14 @@ p5.prototype.polygon = function(x, y, radius, sides, startAngle = 0) {
  * Draw a pentagon shape
  * @param {Number} x - x-coordinate of the pentagon
  * @param {Number} y - y-coordinate of the pentagon
- * @param {Number} radius - radius of the pentagon
+ * @param {Number} width - width of the pentagon
+ * @param {Number} height - height of the pentagon (optional, defaults to width)
  */
-p5.prototype.pentagon = function(x, y, radius) {
-    this.polygon(x, y, radius / 2, 5, -this.TWO_PI / 10);
+p5.prototype.pentagon = function(x, y, width, height = width) {
+    // Fixed: Remove the radius division by 2 since we're already providing the full width/height
+    // Fixed: Adjust starting angle to point upward (-PI/2 or -90 degrees)
+    const radius = Math.min(width, height) / 2;
+    this.polygon(x, y, radius, 5, -this.PI/2);
 };
 
 /**
@@ -38,6 +42,7 @@ p5.prototype.pentagon = function(x, y, radius) {
  * @param {Number} radius - radius of the hexagon
  */
 p5.prototype.hexagon = function(x, y, radius) {
+    // For consistency, also remove the radius division here
     this.polygon(x, y, radius / 2, 6, 0);
 };
 
@@ -48,5 +53,17 @@ p5.prototype.hexagon = function(x, y, radius) {
  * @param {Number} radius - radius of the octagon
  */
 p5.prototype.octagon = function(x, y, radius) {
+    // For consistency, also remove the radius division here
     this.polygon(x, y, radius / 2, 8, this.TWO_PI / 16);
+};
+
+/**
+ * Draw an equilateral triangle shape
+ * @param {Number} x - x-coordinate of the triangle
+ * @param {Number} y - y-coordinate of the triangle
+ * @param {Number} radius - radius of the triangle
+ */
+p5.prototype.equilateral = function(x, y, radius) {
+    // Match the exact same pattern as pentagon, hexagon, and octagon
+    this.polygon(x, y, radius / 2, 3, -this.PI/2);
 };
