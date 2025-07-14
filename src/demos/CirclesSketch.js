@@ -19,6 +19,8 @@ const CirclesSketch = (p) => {
         p.createCanvas(p.windowWidth, p.windowHeight);
         p.colorMode(p.HSB);
         p.background(0);
+        p.canvas = p._renderer.canvas;
+        p.canvas.classList.add('p5Canvas--cursor-play');
     };
 
     p.draw = () => {
@@ -173,6 +175,10 @@ const CirclesSketch = (p) => {
         if(p.audioLoaded){
             if (p.song.isPlaying()) {
                 p.song.pause();
+                if (p.canvas) {
+                    p.canvas.classList.add('p5Canvas--cursor-play');
+                    p.canvas.classList.remove('p5Canvas--cursor-pause');
+                }
             } else {
                 if (parseInt(p.song.currentTime()) >= parseInt(p.song.buffer.duration)) {
                     p.reset();
@@ -191,6 +197,10 @@ const CirclesSketch = (p) => {
                 }
                 document.getElementById("play-icon").classList.remove("fade-in");
                 p.song.play();
+                if (p.canvas) {
+                    p.canvas.classList.add('p5Canvas--cursor-pause');
+                    p.canvas.classList.remove('p5Canvas--cursor-play');
+                }
                 if (typeof window.dataLayer !== typeof undefined && !p.hasStarted){
                     window.dataLayer.push(
                         { 
