@@ -16,6 +16,15 @@ const CirclesSketch = (p) => {
     };
 
     p.setup = () => {
+        // Use $fx from fxhash.min.js
+        let seed = 12345;
+        let fxhash = null;
+        if (typeof window !== 'undefined' && window.$fx && window.$fx.hash) {
+            fxhash = window.$fx.hash;
+            // Use the first 16 characters of the hash as a hex seed, or hashCode fallback
+            seed = parseInt(fxhash.slice(2, 16), 16) || Array.from(fxhash).reduce((acc, c) => acc + c.charCodeAt(0), 0);
+        }
+        p.randomSeed(seed);
         p.createCanvas(p.windowWidth, p.windowHeight);
         p.colorMode(p.HSB);
         p.background(0);

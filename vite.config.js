@@ -4,7 +4,7 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 import path from 'path';
 
 export default defineConfig({
-  base: process.env.VITE_BASE_PATH || '/',
+  base: process.env.VITE_BASE_PATH || './',
   resolve: {
     alias: {
       '@audio': path.resolve(__dirname, 'src/audio'),
@@ -28,6 +28,10 @@ export default defineConfig({
         {
           src: 'src/audio/*.mid',
           dest: 'audio',
+        },
+        {
+          src: 'src/lib/fxhash.min.js',
+          dest: 'lib',
         },
       ],
     }),
